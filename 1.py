@@ -23,8 +23,9 @@ for i in range(2, jd['items']['last_page'] + 1):
     data.append(pd.DataFrame(jd['items']['data']))
     
 df = pd.concat(data, ignore_index = True) #取出新聞資料
-df = df[['newsId', 'title', 'summary']]#取出特定欄位
+df = df[['newsId', 'title', 'summary']]  #取出特定欄位
 df['link'] = df['newsId'].apply(lambda  x: 'https://m.cnyes.com/news/id/' + str(x))#建立連結
 df.to_csv('news.csv', encoding = 'utf-8-sig',index=False)
-df.to_excel('news.xlsx',index=False)   # Save To Excel
+df.to_excel('news.xlsx',index=False)    # Save To Excel
+
 print(df)
